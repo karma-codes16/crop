@@ -28,7 +28,7 @@ const openai = new OpenAI({
 /* ============================= */
 
 app.get("/", (req, res) => {
-  res.send("✅ Crop AI Server Running");
+  app.use(express.static("public"));
 });
 
 /* ============================= */
@@ -91,4 +91,4 @@ Format clearly.
 app.listen(PORT, () => {
   console.log(`🚀 Server running at ${PORT}`);
 });
-app.use(express.static("public"));
+
