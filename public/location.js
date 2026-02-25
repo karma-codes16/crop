@@ -209,7 +209,7 @@ async function findCrop() {
 
   try {
 
-    const response = await fetch("http://localhost:5000/recommend", {
+    const response = await fetch("/recommend", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -239,5 +239,6 @@ const testBtn = document.getElementById("findRecommendation");
 console.log("Button Found:", testBtn);
 
 const findBtn = document.getElementById("findRecommendation");
+
 
 findBtn.addEventListener("click", findCrop);
