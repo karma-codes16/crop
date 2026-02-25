@@ -28,7 +28,7 @@ const openai = new OpenAI({
 /* ============================= */
 
 app.get("/", (req, res) => {
-  app.use(express.static("public"));
+  app.use(express.static("public/index.html"));
 });
 
 /* ============================= */
@@ -91,4 +91,5 @@ Format clearly.
 app.listen(PORT, () => {
   console.log(`🚀 Server running at ${PORT}`);
 });
+
 
