@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crops | Smart Agro Advisor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- RESULT POPUP -->
+<div class="result-overlay" id="resultOverlay">
+  <div class="result-container">
+    <button class="close-popup" id="closePopup">✖</button>
+    <h2>🌱 AI Crop Recommendation</h2>
+    <div id="resultContent" class="result-content">
+      <!-- AI result will appear here -->
+    </div>
+  </div>
+</div>
+<header class="page-header">
+  <h1>🌾 Crop Recommendation</h1>
+  <p>AI-Based Crop Intelligence Module</p>
+</header>
+
+<section class="analysis-container">
+
+  <!-- LEFT PANEL -->
+  <div class="panel left-panel">
+
+    <h2 class="panel-title">📍 Location Details</h2>
+
+    <div class="input-group">
+      <label>Search State</label>
+      <input type="text" id="stateSearch" placeholder="Type state name...">
+    </div>
+
+    <div class="input-group">
+      <label>Select State</label>
+      <select id="stateSelect"></select>
+    </div>
+
+    <div class="input-group">
+      <label>Select District</label>
+      <select id="districtSelect"></select>
+    </div>
+
+    <div class="input-group">
+      <label>Select Locality</label>
+      <select id="localitySelect"></select>
+    </div>
+
+    <button class="primary-btn" id="fetchClimate">
+      🔍 Fetch Climate Data
+    </button>
+    <div class="loader" id="locationLoader"></div>
+
+  </div>
+
+
+  <!-- RIGHT PANEL -->
+  <div class="panel right-panel">
+
+    <h2 class="panel-title">🌦 Climate & Soil Data</h2>
+
+    <div class="input-row">
+      <div class="input-group">
+        <label>Temperature (°C)</label>
+        <input type="number" id="temperature">
+      </div>
+
+      <div class="input-group">
+        <label>Humidity (%)</label>
+        <input type="number" id="humidity">
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-group">
+        <label>Rainfall (mm)</label>
+        <input type="number" id="rainfall">
+      </div>
+
+      <div class="input-group">
+        <label>Soil pH</label>
+        <input type="number" id="ph" step="0.1">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Soil Type</label>
+      <select id="soilType">
+        <option>Select Soil Type</option>
+        <option>Loamy</option>
+        <option>Clay</option>
+        <option>Sandy</option>
+        <option>Black</option>
+        <option>Laterite</option>
+      </select>
+    </div>
+
+    <button class="analyze-btn" id="findRecommendation">
+      ✅ Find Recommendation
+    </button>
+
+  </div>
+
+</section>
+
+<footer class="page-footer">
+  © 2026 Smart AgriTech • Crop Module
+</footer>
+<script src="location.js"></script>
+</body>
+</html>

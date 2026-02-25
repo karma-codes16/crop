@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Agro Advisor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<style>
+  /* HEADER */
+.main-header {
+  position: absolute;
+  top: 30px;
+  text-align: center;
+  width: 100%;
+  color: white;
+  animation: fadeDown 1.2s ease forwards;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.main-header p {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* FOOTER */
+.main-footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 13px;
+  opacity: 0.85;
+  animation: fadeUp 1.5s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+  body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg,#1b5e20,#4caf50);
+}
+
+/* Soft animated background glow */
+.background-blur {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 60%);
+  animation: pulse 6s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Premium Glass Circle */
+.circle {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  margin: 40px auto;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.circle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
+
+/* Rotate Button */
+.rotate-btn {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.6s ease;
+}
+
+/* Enter Button */
+.enter-btn {
+  margin-top: 10px;
+  padding: 12px 40px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: white;
+  color: #1b5e20;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: all 0.4s ease;
+}
+
+.enter-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+</style>
+<body>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Agro Advisor</title>
+  <link rel="stylesheet" href="home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="main-header">
+  <h1>🌱 Smart Agro Advisor</h1>
+  <p>AI-Powered Agricultural Recommendation System</p>
+</header>
+
+<div class="background-blur"></div>
+
+<div class="container">
+  
+  <button id="rotateBtn" class="rotate-btn">⟳</button>
+
+  <div id="categoryCircle" class="circle">
+      <span id="categoryText">CROPS</span>
+  </div>
+
+  <button id="enterBtn" class="enter-btn">ENTER</button>
+
+</div>
+
+<footer class="main-footer">
+  © 2026 Smart AgriTech • Empowering Farmers with Intelligent Insights
+</footer>
+
+</body>
+</html>
+
+<script>
+  const categories = ["CROPS", "FRUITS", "FLOWERS", "PLANTS"];
+let index = 0;
+let angle = 0;
+
+const text = document.getElementById("categoryText");
+const rotateBtn = document.getElementById("rotateBtn");
+const enterBtn = document.getElementById("enterBtn");
+const circle = document.getElementById("categoryCircle");
+
+rotateBtn.addEventListener("click", () => {
+  index = (index + 1) % categories.length;
+
+  angle += 180;
+  rotateBtn.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+
+  // Text fade animation
+  text.style.opacity = 0;
+  text.style.transform = "scale(0.5)";
+
+  setTimeout(() => {
+    text.textContent = categories[index];
+    text.style.opacity = 1;
+    text.style.transform = "scale(1)";
+  }, 200);
+});
+
+enterBtn.addEventListener("click", () => {
+
+  circle.style.transform = "scale(1.3)";
+  circle.style.opacity = "0";
+
+  setTimeout(() => {
+
+    const selected = categories[index].toLowerCase();
+
+    if (selected === "crops") {
+      window.location.href = "crop.html";
+    }
+    else if (selected === "fruits") {
+      window.location.href = "fruit.html";
+    }
+    else if (selected === "flowers") {
+      window.location.href = "flower.html";
+    }
+    else if (selected === "plants") {
+      window.location.href = "plant.html";
+    }
+
+  }, 400);
+
+});
+
+</script>
+</body>
+</html>
