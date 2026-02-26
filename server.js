@@ -29,7 +29,7 @@ const openai = new OpenAI({
 app.use(express.static("public"));
 
 app.get("*", (req, res) => {
-    res.sendFile(__dirname + "/public/index.hbs");
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 /* ============================= */
@@ -92,6 +92,7 @@ Format clearly.
 app.listen(PORT, () => {
   console.log(`🚀 Server running at ${PORT}`);
 });
+
 
 
 
