@@ -1,7 +1,8 @@
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const OpenAI = require("openai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 dotenv.config();
 
@@ -19,9 +20,7 @@ app.use(express.json());
 /* OPENAI SETUP */
 /* ============================= */
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 /* ============================= */
 /* HEALTH CHECK */
@@ -60,18 +59,14 @@ For each crop provide:
 Format clearly.
 `;
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: "You are a professional agricultural AI." },
-        { role: "user", content: prompt }
-      ],
-      temperature: 0.7
-    });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const aiResult = completion.choices[0].message.content;
+const result = await model.generateContent(prompt);
+const response = await result.response;
 
-    res.json({ result: aiResult });
+res.json({
+  result: response.text()
+});
 
   } catch (error) {
     console.error("AI ERROR FULL:", error);
@@ -93,6 +88,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
+
 
 
 
