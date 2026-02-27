@@ -1,4 +1,3 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -88,6 +87,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
+
 
 
 
